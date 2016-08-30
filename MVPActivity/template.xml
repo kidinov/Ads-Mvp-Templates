@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVP Activity"
+    minApi="7"
+    minBuildApi="14"
+    description="Creates a new MVP activity">
+
+    <category value="MVP" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${layoutToActivity(layoutName)}"
+        default="MainActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="generateLayout"
+        name="Generate Layout File"
+        type="boolean"
+        default="true"
+        help="If true, a layout file will be generated" />
+
+    <parameter
+        id="generateView"
+        name="Generate View"
+        type="boolean"
+        default="true"
+        help="If true, a View interface will be generated" />
+
+   <parameter
+        id="generatePresenter"
+        name="Generate Presenter"
+        type="boolean"
+        default="true"
+        help="If true, a Presenter interface will be generated" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_main"
+        visibility="generateLayout"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
+
+    <parameter
+        id="viewName"
+        name="View Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainView"
+        visibility="generateView"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}View"
+        help="The name of the View interface to create" />
+
+    <parameter
+        id="presenterName"
+        name="Presenter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainPresenter"
+        visibility="generatePresenter"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Presenter"
+        help="The name of the Presenter interface to create" />
+    
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_mvp_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

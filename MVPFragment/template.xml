@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVP Fragment"
+    minApi="7"
+    minBuildApi="14"
+    description="Creates a new MVP fragment">
+
+    <category value="MVP" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="className"
+        name="Fragment Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MvpFragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="includeLayout"
+        name="Create layout XML"
+        type="boolean"
+        default="true"
+        help="Generate a layout XML for the fragment" />
+
+    <parameter
+        id="generateView"
+        name="Generate View"
+        type="boolean"
+        default="true"
+        help="If true, a View interface will be generated" />
+
+   <parameter
+        id="generatePresenter"
+        name="Generate Presenter"
+        type="boolean"
+        default="true"
+        help="If true, a Presenter interface will be generated" />
+
+    <parameter
+        id="fragmentName"
+        name="Fragment Layout Name"
+        type="string"
+        constraints="layout|nonempty|unique"
+        default="fragment_blank"
+        visibility="includeLayout"
+        suggest="fragment_${classToResource(className)}"
+        help="The name of the layout to create" />
+
+    <parameter
+        id="viewName"
+        name="View Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainView"
+        visibility="generateView"
+        suggest="${underscoreToCamelCase(classToResource(className))}View"
+        help="The name of the View interface to create" />
+
+    <parameter
+        id="presenterName"
+        name="Presenter Name"
+        type="string"
+        constraints="class|nonempty|unique"
+        default="MainPresenter"
+        visibility="generatePresenter"
+        suggest="${underscoreToCamelCase(classToResource(className))}Presenter"
+        help="The name of the Presenter interface to create" />
+
+    <thumbs>
+        <thumb>template_mvp_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

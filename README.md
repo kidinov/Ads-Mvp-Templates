@@ -2,7 +2,7 @@
 
 # Usage
 
-1. Place `MVPFragmemnt` dir into `{ADS_DIR}/plugins/android/lib/templates/other/`
+1. Place `MVPFragmemnt` dir into `{ADS_DIR}/plugins/android/lib/templates/other/`  (On Mac -> Applications -> Android Studio -> Right Click Show Package Contents -> Contents -> plugins ->android ->lib -> templates ->other)
 2. Place `MVPActivity` dir into `{ADS_DIR}/plugins/android/lib/templates/activities/`
 3. Restart Android Studio.
 4. Right click on package where MVPFragment or MVPActivity need to be create -> New -> MVP

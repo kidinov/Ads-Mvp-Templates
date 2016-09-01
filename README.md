@@ -1,4 +1,4 @@
-# Android developer studio templates for [MVP architecture](https://github.com/ribot/android-boilerplate) proposed by ribot
+# Android Studio templates for [MVP architecture](https://github.com/ribot/android-boilerplate) proposed by ribot
 
 # Usage
 
